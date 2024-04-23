@@ -27,7 +27,7 @@ const Home = () => {
 
       <div className="home_row">
       <Product  title="The lean startup" price={29.09} image="https://imgs.search.brave.com/5oqWZ578CVFNDjJKn3PlRrbeOHHKPNeiQSMHAVIuMYE/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMtZXUuc3NsLWlt/YWdlcy1hbWF6b24u/Y29tL2ltYWdlcy9J/LzgxdnZnWnFDc2tM/Ll9BQ19VTDExNl9T/UjExNiwxMTZfLmpw/Zw" rating={5} />
-       
+            <Product  title="The lean startup" price={29.09} image="https://imgs.search.brave.com/5oqWZ578CVFNDjJKn3PlRrbeOHHKPNeiQSMHAVIuMYE/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMtZXUuc3NsLWlt/YWdlcy1hbWF6b24u/Y29tL2ltYWdlcy9J/LzgxdnZnWnFDc2tM/Ll9BQ19VTDExNl9T/UjExNiwxMTZfLmpw/Zw" rating={5} />
       </div>
       </div>
     </div>
