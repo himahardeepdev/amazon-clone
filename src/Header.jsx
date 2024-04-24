@@ -7,7 +7,7 @@ import { useStateValue } from './StateProvider';
 
 
 const Header = () => {
-  const [{basket}, dispatch] = useStateValue();
+  const [{basket}] = useStateValue();
   return (
     <div className='header'>
      <Link to="/" > <img src="https://imgs.search.brave.com/CF3gDsXAob3TFMqj_31vmu9UQ138cd9q99dzGUN7mqA/rs:fit:860:0:0/g:ce/aHR0cHM6Ly93d3cu/cG5nbWFydC5jb20v/ZmlsZXMvQW1hem9u/LUxvZ28tRG93bmxv/YWQtUE5HLUltYWdl/LnBuZw" alt="" className='header_logo' /></Link>
