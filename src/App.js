@@ -10,18 +10,19 @@ import { auth } from './firebase';
 
 function HeaderWithConditionalRendering() {
   const location = useLocation();
-  const value = useStateValue();
+  // eslint-disable-next-line no-empty-pattern
+  const [{},dispatch] = useStateValue();
   useEffect(()=>{
 
     auth.onAuthStateChanged(authUser=>{
       console.log("the user is >>>>",authUser);
       if(authUser){
-        value.dispatch({
+        dispatch({
           type : 'SET_USER',
           user : authUser
         });
       }else{
-       value.dispatch({
+       dispatch({
           type : 'SET_USER',
           user : null
         });
@@ -31,7 +32,7 @@ function HeaderWithConditionalRendering() {
     })
 
 
-  },[value]);
+  },[dispatch]);
 
   
   const shouldShowHeader = () => {
