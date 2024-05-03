@@ -4,10 +4,17 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SearchIcon from '@mui/icons-material/Search';
 import { Link } from 'react-router-dom';
 import { useStateValue } from './StateProvider';
+import { auth } from './firebase';
 
 
 const Header = () => {
-  const [{basket}] = useStateValue();
+  const [{basket , user}] = useStateValue();
+
+  const handleAuthentication = ()=>{
+    if(user){
+      auth.signOut();
+    }
+  }
   return (
     <div className='header'>
      <Link to="/" > <img src="https://imgs.search.brave.com/CF3gDsXAob3TFMqj_31vmu9UQ138cd9q99dzGUN7mqA/rs:fit:860:0:0/g:ce/aHR0cHM6Ly93d3cu/cG5nbWFydC5jb20v/ZmlsZXMvQW1hem9u/LUxvZ28tRG93bmxv/YWQtUE5HLUltYWdl/LnBuZw" alt="" className='header_logo' /></Link>
@@ -18,10 +25,10 @@ const Header = () => {
         <SearchIcon className='header_searchIcon' />
       </div>
       <div className="header_nav">
-        <Link to="/login">
-          <div className="header_option">
+        <Link to={ !user && "/login"}>
+          <div onClick={handleAuthentication} className="header_option">
             <span className="header_otpionLineOne">Hello Guest</span>
-            <span className="header_optionLineTwo"> Sign in </span>
+            <span className="header_optionLineTwo"> {user ? "Sign Out" : "Sign In"} </span>
           </div>
         </Link>
        

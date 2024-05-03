@@ -1,27 +1,37 @@
 import React,{useState} from 'react'
 import './login.css';
-import { Link } from 'react-router-dom';
-import { auth } from './firebase';
+import { Link, useNavigate } from 'react-router-dom';
+import  {auth} from './firebase';
+
+
 
 const Login = () => {
     const [email , setEmail] = useState('');
     const [password , setPassword] = useState('');
+    const navigate = useNavigate();
 
     const signIn = e=>{
         e.preventDefault();
-        // some API calls 
+        auth.signInWithEmailAndPassword(email,password).then((auth)=>{
+            navigate('/');
+        }).catch((error)=> alert(error.message));
     }
 
-    const register = e=>{
+    const register = async e => {
         e.preventDefault();
         
-        auth.createUserWithEmailAndPassword(email , password).then(
-            (auth)=>{
-                console.log(auth);
+          await auth.createUserWithEmailAndPassword(email,password)
+          .then((auth)=>{
+            if(auth){
+                navigate('/');
             }
-        ).catch(error => alert(error.message));
-        // some API calls 
-    }
+          })
+          .catch((error)=>{
+            alert(error.message);
+          })
+          
+       
+      }
 
   return (
     <div className='login'>
@@ -44,7 +54,7 @@ const Login = () => {
         <p>
         By signing-in you agree to the AMAZON FAKE CLONE Conditions of Use & Sale. Please see our Privacy Notice, our Cookies Notice and our Intere Based Ads Notice.
         </p>
-    <button onClick={register}  className='login_registerButton' >Create your Account</button>
+    <button type='submit' onClick={register}  className='login_registerButton' >Create your Account</button>
       </div>
     </div>
   )
