@@ -18,10 +18,13 @@ const Header = () => {
         <SearchIcon className='header_searchIcon' />
       </div>
       <div className="header_nav">
-        <div className="header_option">
+        <Link to="/login">
+          <div className="header_option">
             <span className="header_otpionLineOne">Hello Guest</span>
             <span className="header_optionLineTwo"> Sign in </span>
-        </div>
+          </div>
+        </Link>
+       
         <div className="header_option">
         <span className="header_otpionLineOne">Returns</span>
             <span className="header_optionLineTwo"> &Orders </span>
